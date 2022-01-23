@@ -1,4 +1,12 @@
-# Getting Started with Create React App
+# HOW TO USE THIS APP (Step by step)
+### (1) New User Registration: 
+Use Email id for registration, verification link will send to that email-id (You can use temporary email client such as "guerrillamail.com" for testing.)
+### (2) Click the verification link sent to your email-id:
+New user get verification link from Firebase via email.
+### (3) User LogIn:
+User can only able to login if user is verified.
+
+## Getting Started with Create React App (How to install this app in your system)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
