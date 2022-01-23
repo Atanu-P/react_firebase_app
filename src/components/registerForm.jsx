@@ -42,7 +42,7 @@ class RegisterForm extends Component {
           : error.details[0].message;
       }
 
-      console.log(name, value, ">>>>>>>>>>");
+      // console.log(name, value, ">>>>>>>>>>");
       return error.details[0].message;
     } else {
       return null;
@@ -117,12 +117,15 @@ class RegisterForm extends Component {
   };
 
   componentDidMount() {
-    // get authentication token from session storage
-    let authToken = sessionStorage.getItem("Auth Token");
-    if (authToken) {
-      // if authentication token exist page redirect to home page
-      return this.props.history.replace("/home");
-    }
+    onAuthStateChanged(auth, (user) => {
+      if (user && user.emailVerified) {
+        // redirect to home-page when user logged in
+        return this.props.history.replace("/home");
+      } else {
+        // redirect to login-page when user logged out
+        return this.props.history.replace("/login");
+      }
+    });
   }
   render() {
     return (

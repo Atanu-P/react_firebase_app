@@ -1,7 +1,7 @@
 import React, { Component, useEffect } from "react";
 import Joi from "joi-browser";
 import { app, auth, logInWithEmailAndPassword, user } from "../firebase";
-import { getAuth } from "firebase/auth";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 //import { useAuthState } from "react-firebase-hooks";
 //import firebase from "../firebase";
 
@@ -80,19 +80,22 @@ class LoginForm extends Component {
   };
 
   componentDidMount() {
-    // get authentication token from session storage
-    let authToken = sessionStorage.getItem("Auth Token");
-    if (authToken) {
-      // if authentication token exist page redirect to home page
-      return this.props.history.replace("/home");
-    }
+    onAuthStateChanged(auth, (user) => {
+      if (user && user.emailVerified) {
+        // redirect to home-page when user logged in
+        return this.props.history.replace("/home");
+      } else {
+        // redirect to login-page when user logged out
+        return this.props.history.replace("/login");
+      }
+    });
   }
-  componentDidUpdate() {
-    let authToken = sessionStorage.getItem("Auth Token");
-    if (authToken) {
-      return this.props.history.replace("/home");
-    }
-  }
+  // componentDidUpdate() {
+  //   let authToken = sessionStorage.getItem("Auth Token");
+  //   if (authToken) {
+  //     return this.props.history.replace("/home");
+  //   }
+  // }
 
   render() {
     // console.log(useAuthState(auth));
