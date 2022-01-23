@@ -93,7 +93,7 @@ const logInWithEmailAndPassword = async (email, password) => {
 const registerWithEmailAndPassword = async (name, email, password) => {
   try {
     const res = await createUserWithEmailAndPassword(auth, email, password);
-    console.log(res.user, "res");
+    // console.log(res.user, "res");
     // sessionStorage.setItem("Auth Token", res._tokenResponse.refreshToken);
 
     const user = res.user;
@@ -115,7 +115,7 @@ const registerWithEmailAndPassword = async (name, email, password) => {
     // });
     sendEmailVerification(res.user).then(() => {
       alert(
-        "New user successfully registerd ! verification link sent to email id !!"
+        "User successfully registerd ! verification link sent to email id !!"
       );
     });
     signOut(auth);

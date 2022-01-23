@@ -123,7 +123,7 @@ class RegisterForm extends Component {
         return this.props.history.replace("/home");
       } else {
         // redirect to login-page when user logged out
-        return this.props.history.replace("/login");
+        // return this.props.history.replace("/register");
       }
     });
   }
