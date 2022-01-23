@@ -10,7 +10,7 @@ User can only able to login if user is verified.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Project Setup (Available Scripts)
 
 In the project directory, you can run:
 
